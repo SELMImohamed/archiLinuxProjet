@@ -1,5 +1,3 @@
-import json
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -46,7 +44,7 @@ def userlist():
 def login(login: Basic_user):
     cursor = db.cursor()
     data = cursor.execute("SELECT * FROM users WHERE userName=%s AND password=%s", (login.pseudo, login.password))
-    return print(data, "Authenticated !")
+    return print("Authenticated !")
 
 
 @app.post("/register")
@@ -55,4 +53,4 @@ def register(register: Basic_user):
     cursor.execute("INSERT INTO users (userName, password) VALUES (%s, %s)", (register.pseudo, register.password))
     db.commit()
     cursor.close()
-    return
+    return print("Registered !")
