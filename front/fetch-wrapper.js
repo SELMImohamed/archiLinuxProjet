@@ -4,7 +4,7 @@ export default class FetchWrapper {
     }
   
     get(endpoint) {
-      return fetch(this.baseURL + endpoint).then((response) => response.json());
+      return this._send("get", endpoint);
     }
   
     put(endpoint, body) {
@@ -29,7 +29,7 @@ export default class FetchWrapper {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body),
+        body: body ? JSON.stringify(body) : undefined,
       }).then((response) => response.json());
     }
   }

@@ -1,25 +1,28 @@
 import FetchWrapper from "./fetch-wrapper.js";
 
 console.log("Hello from front/app.js");
-const API = new FetchWrapper("http://192.168.64.4:8000/")
+const API = new FetchWrapper("http://192.168.64.4:8001/")
 
 
 const form = document.querySelector("#form");
 const username = document.querySelector("#username");
 const password = document.querySelector("#password");
-const list = document.querySelector("#list");
+const element = document.querySelector("#list");
 console.log(list);
 
-API.get("users").then((data) => {
-    console.log(data.pseudo);
-    const data2 = JSON.parse(data);
-    console.log(data2);
-    data2.forEach(user=>{
-         console.log(user.pseudo)
-        list.insertAdjacentHTML("beforeend", `<li>${user.pseudo}</li>`)
-        })
-     
+fetch("http://192.168.64.4:8001/users").then(
+    (response) => response.json()
+).then((data) => {
+    const list = [data];
+    list.forEach((user) => {
+        const li = document.createElement("li");
+        li.innerHTML = user.pseudo;
+        element.appendChild(li);
+    }
+    );
 });
+
+
 
 
 
