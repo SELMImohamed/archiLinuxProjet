@@ -8,7 +8,7 @@ const form = document.querySelector("#form");
 const username = document.querySelector("#username");
 const password = document.querySelector("#password");
 const element = document.querySelector("#list");
-console.log(list);
+console.log("log modification serveur apache");
 
 fetch("http://192.168.64.4:8001/users").then(
     (response) => response.json()
