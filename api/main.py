@@ -16,7 +16,7 @@ app.add_middleware(
     ],
     allow_headers=["*"],
 )
-
+print("API is running !")
 
 # ----------- CLASSES ------------
 
