@@ -10,18 +10,22 @@ const password = document.querySelector("#password");
 const element = document.querySelector("#list");
 console.log("log modification serveur apache");
 
+const fetchUsers = () => {
 fetch("http://192.168.64.4:8001/users").then(
     (response) => response.json()
 ).then((data) => {
+    console.log(data);
     const list = [data];
     list.forEach((user) => {
         const li = document.createElement("li");
-        li.innerHTML = user.pseudo;
+        for(let i = 0; i < user.length; i++){
+        element.innerHTML += `<li>${user[i]}</li>`;
+        }
         element.appendChild(li);
     }
     );
 });
-
+}
 
 
 
@@ -35,6 +39,7 @@ form.addEventListener("submit", (e)  => {
         password: password.value,
     }).then((data) => {
         console.log(data);
+        fetchUsers();
     }).catch((err) => {console.error(err)});
     }
 );

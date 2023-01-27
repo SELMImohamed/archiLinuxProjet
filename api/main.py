@@ -35,7 +35,7 @@ def userlist():
     cursor.execute("SELECT * FROM users")
     test = cursor.fetchall()
 
-    return {test}
+    return test
 
 
 # ---------- POST
