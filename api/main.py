@@ -35,7 +35,7 @@ def userlist():
     cursor.execute("SELECT * FROM users")
     test = cursor.fetchall()
 
-    return {"pseudo": test[0][1], "password": test[0][2]}
+    return {test}
 
 
 # ---------- POST
