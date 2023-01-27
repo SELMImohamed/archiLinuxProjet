@@ -17,11 +17,9 @@ fetch("http://192.168.64.4:8001/users").then(
     console.log(data);
     const list = [data];
     list.forEach((user) => {
-        const li = document.createElement("li");
-        for(let i = 0; i < user.length; i++){
+        for(let i = 1; i < user.length; i++){
         element.innerHTML += `<li>${user[i]}</li>`;
         }
-        element.appendChild(li);
     }
     );
 });
