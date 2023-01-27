@@ -4,11 +4,10 @@ from pydantic import BaseModel
 from config import db
 
 app = FastAPI()
-orgin = ['http://192.168.64.6/']
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins= orgin,
+    allow_origins=['*'],
     allow_credentials=True,
     allow_methods=[
         "GET",
@@ -16,7 +15,7 @@ app.add_middleware(
     ],
     allow_headers=["*"],
 )
-print("API is running !")
+
 
 # ----------- CLASSES ------------
 
