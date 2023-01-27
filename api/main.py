@@ -53,4 +53,4 @@ def register(register: Basic_user):
     cursor.execute("INSERT INTO users (userName, password) VALUES (%s, %s)", (register.pseudo, register.password))
     db.commit()
     cursor.close()
-    return print("Registered !")
+    return {"pseudo": register.pseudo, "password": register.pseudo,}
